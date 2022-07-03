@@ -2,14 +2,15 @@
 // Яка кількість смиволів повинна бути в інпуті, зазначається в його атрибуті data-length.
 // Якщо введена правильна кількість символів, то border інпуту стає зеленим, якщо неправильна кількість - червоним.
 
+
 const textInput = document.querySelector('#validation-input');
+const checkLength = +textInput.dataset.length;
 
 
 textInput.addEventListener('blur', onTextInput);
 
 function onTextInput(event) {
-    if (event.currentTarget.value.length === 6) {
-       textInput.style.borderColor = "#4caf50"
-   } else
-    textInput.style.borderColor = "#f44336"
+    if (event.currentTarget.value.length === checkLength) {
+        textInput.classList.toggle('valid');
+   } textInput.classList.toggle('invalid');
 };

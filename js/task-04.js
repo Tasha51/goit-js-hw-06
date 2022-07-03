@@ -16,8 +16,6 @@ function onIncreaseBtnClick() {
     counterValue +=1;
     return result.textContent = counterValue;
 };
-console.log();
-
 
 
 
