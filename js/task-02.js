@@ -15,14 +15,20 @@ const ingredients = [
   'Condiments',
 ];
 
-const elements = ingredients.map((elem, i) => {
- const itemEl = document.createElement('li');
- itemEl.textContent = `${ingredients[i]}`;
- itemEl.classList.add('item');
-  
-  return itemEl;
-})
-console.log(elements);
 
 const listEl = document.querySelector('#ingredients');
+
+
+
+const makeNewItem = items => {
+  return items.map(item => {
+    const itemEl = document.createElement('li');
+    itemEl.textContent = item;
+    itemEl.classList.add('item');
+  
+    return itemEl;
+  });
+};
+
+const elements = makeNewItem(ingredients); 
 listEl.append(...elements);
