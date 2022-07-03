@@ -15,9 +15,19 @@ const images = [
   },
 ];
 
+const makeNewImagesCardMarkup = ({ url, alt}) => {
+  return `
+  <li>
+    <img src='${url}' alt='${alt}' width=230 height=150>
+  </li>`;
+};
+
+
+
+const makeListCard = images.map(makeNewImagesCardMarkup).join('');
+
+console.log(makeListCard);
+
 const listEl = document.querySelector('.gallery');
 
-const elements = images.map(elem => {
-  const itemEl = document.createElement('li');
-  
-})
+listEl.insertAdjacentHTML("afterbegin", makeListCard);
