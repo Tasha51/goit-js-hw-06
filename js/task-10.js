@@ -6,39 +6,42 @@ const refs = {
   destroyBtn: document.querySelector('[data-destroy]'),
   boxEl: document.querySelector('#boxes'),
 };
-refs.inputEl.addEventListener('input', onInput);
 
-refs.createBtn.addEventListener('click', CreateBoxes);
+refs.createBtn.addEventListener('click', onCreateBtn);
 
 refs.destroyBtn.addEventListener('click', onDestroyBtn);
 
-function onInput() {
-  
-  console.log(Number(refs.inputEl.value));
+function onCreateBtn() {
+  let amount = Number(refs.inputEl.value);
+  console.log(amount);
+  createBoxes(amount);
 };
 
 
-function CreateBoxes() {
-  let fragment = new DocumentFragment();
-  let numArr = [];
+let size = 30;
+
+function createBoxes() {
   
-  for (let i = 0; i < Number(refs.inputEl.value); i+=1){
-      const divEl = document.createElement('div');
-      const size = 30 + i * 10 + 'px';
-      divEl.style.width = size;
-      divEl.style.height = size;
-      divEl.style.backgroundColor = getRandomHexColor();
-       numArr.push(divEl);
-       fragment.append(divEl);
+  for (let i = 0; i < Number(refs.inputEl.value); i += 1){ 
+    const divEl = document.createElement('div');
+    size +=10
+    divEl.style.width = size + 'px';
+    divEl.style.height = size + 'px';
+    divEl.style.backgroundColor = getRandomHexColor();
+    refs.boxEl.appendChild(divEl);
   };
-  refs.boxEl.append(fragment);
+  
 };
 
 
 
-function onDestroyBtn(event) {
-  refs.boxEl.innerHTML = '';
-  refs.inputEl.value = '';
+function onDestroyBtn() {
+  while (refs.boxEl.firstChild) {
+    refs.boxEl.removeChild(refs.boxEl.firstChild);
+  }
+
+  size = 30;
+  
 }
 
 function getRandomHexColor() {

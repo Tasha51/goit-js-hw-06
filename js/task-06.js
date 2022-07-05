@@ -11,6 +11,8 @@ textInput.addEventListener('blur', onTextInput);
 
 function onTextInput(event) {
     if (event.currentTarget.value.length === checkLength) {
-        textInput.classList.toggle('valid');
-   } textInput.classList.toggle('invalid');
+        textInput.classList.remove('invalid');
+       return textInput.classList.add('valid');
+   }    textInput.classList.remove('valid');
+       return textInput.classList.add('invalid');
 };

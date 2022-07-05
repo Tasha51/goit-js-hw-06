@@ -26,9 +26,10 @@ function onFormSubmit(event) {
             maill, password,
         };
         console.log(formData);
+        return formEl.reset();
     }
     
-    return formEl.reset();
+    
 
      // const formData = new FormData(event.currentTarget);
 
